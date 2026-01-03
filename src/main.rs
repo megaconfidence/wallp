@@ -22,14 +22,18 @@ fn index(app: &State<App>) -> Status  {
         .filter_map(|e:Result<fs::DirEntry, _>| e.ok())
         .map(|e:fs::DirEntry| e.path().to_string_lossy().into_owned())
         .collect::<Vec<_>>();
-    images.sort();
 
-    //set wallpaper to index
-    Command::new("sh")
-        .arg("-c")
-        .arg(format!("pcmanfm --set-wallpaper  {}", images[*index]))
+    images.sort();
+    let image = &images[*index];
+    println!("setting wallpaper to {}", image);
+
+    //set wallpaper to image
+    let _output = Command::new("pcmanfm")
+        .arg("--set-wallpaper")
+        .arg(image)
         .output()
         .expect("failed to change wallpaper");
+    //println!("{:?}", _output);
 
     //set next wallpaper index
     *index = if *index+1 < images.len() {*index+1} else {0};
