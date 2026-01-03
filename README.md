@@ -2,6 +2,8 @@
 
 A web service to cycle through a wallpaper directory written in Rust.
 
+![how it works](./demo.gif)
+
 ## Setup guide
 
 Fix potential accessiblity issues by installing:
