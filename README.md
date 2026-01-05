@@ -1,15 +1,25 @@
 # wallp
 
-A web service to cycle through a wallpaper directory written in Rust.
+A web service to cycle through wallpapers written in Rust.
+
+The idea is simple. You have a directory of wallpapers and want to cycle through them at the click of a button. The services take a wallpaper 
+directory and exposes a get endpoint on port `8998`. Hit the endpoint to page through them. You could use this with a Stream Deck by importing the
+[profile here](./streamdeck) (don't forget to update the ip address).
+
+Dependencies:
+- Linux GUI desktop (LXDE tested on Pi 4)
+- `pcmanfm`
+- Rust
 
 ![how it works](./demo.gif)
 
 ## Setup guide
 
-Fix potential accessiblity issues by installing:
+Install the dependencies:
 
 ```
-sudo apt-get install at-spi2-core
+sudo apt install pcmanfm
+sudo apt install at-spi2-core #fixes potential accessiblity issues
 ```
 
 Clone the repo:
